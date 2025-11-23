@@ -1,24 +1,27 @@
 #!/usr/bin/env python3
 
-def hent_valg(prompt):
-#Sjekker om valget er riktig, og sjekker om det er A eller B
+def hent_valg(prompt, alternativer):
+    alternativer = [a.lower() for a in alternativer]
+    vis = '/'.join(alternativer).upper()
     while True:
-        val = input(prompt).strip().lower()
-        if val in ("a", "b"):
+        val = input(f"{prompt} ({vis}): ").strip().lower()
+        if val in alternativer:
             return val
-        print("Ugyldig valg. Velg 'A' eller 'B'.")
+        print(f"Ugyldig valg. Velg {vis}.")
 
-
-def hent_flervalg(prompt, options):
-    #Leser om du har valgt A, B, C eller D
-    options_set = set(o.lower() for o in options)
-    opts_str = "/".join(options)
-    while True:
-        val = input(prompt).strip().lower()
-        if val in options_set:
-            return val
-        print(f"Ugyldig valg. Velg {opts_str}.")
-
+def vis_sammendrag(valg):
+    print("\n=== Sammendrag av dine valg ===\n")
+    print(f"Konflikt 1: {valg['konflikt1_tekst']}")
+    print(f"Ditt valg: {valg['konflikt1_valg']}")
+    print(f"Konsekvens: {valg['konflikt1_konsekvens']}\n")
+    print(f"Konflikt 2: {valg['konflikt2_tekst']}")
+    print(f"Ditt valg: {valg['konflikt2_valg']}")
+    print(f"Konsekvens: {valg['konflikt2_konsekvens']}\n")
+    print(f"Konflikt 3: {valg['konflikt3_tekst']}")
+    print(f"Ditt valg: {valg['konflikt3_valg']}")
+    print(f"Konsekvens: {valg['konflikt3_konsekvens']}\n")
+    print(f"Sluttresultat: {valg['utfall']}\n")
+    print("Takk for at du spilte!")
 
 def main():
     print("=== Beslutningsspill: Erling som teamleder ===\n")
@@ -26,119 +29,99 @@ def main():
     print("Etter en inspirerende oppstart med høy energi, begynner samarbeidet nå å møte sine første reelle prøver. I starten var stemningen god. ")
     print("Gruppen opplevde høy motivasjon og fellesskap i målet om å lage en portal som kunne øke innbyggerengasjement og transparens i kommunen. ")
     print("Men nå, etter seks uker, har prosjektet gått inn i den klassiske storming-fasen, der ulike faglige perspektiver og personlige preferanser begynner å kollidere")
-    print("Teamet består av Erling [Teamleder], Sivert [IT-Rådgiver], Silje [UX-Designer], Hamdi [Utvikler], Jabir [Innbyggerdialogspesialist], Nora [Kvalitetssikring] og Jabir [Brukerrepresentant]")
-    print("======================")
+    print("Teamet består av Erling [Teamleder], Sivert [IT-Rådgiver], Silje [UX-Designer], Hamdi [Utvikler], Jabir [Innbyggerdialogspesialist], Nora [Kvalitetssikring] og Jabir [Brukerrepresentant]\n")
+    print("======================\n")
 
-    valg1 = None
-    valg2 = None
-    valg3 = None
-
-
-   # Situasjon 1
-
-    print("Situasjon 1: Konflikten mellom Silje (UX) og Sivert (IT).")
-    print("Konflikten er i ferd med å bli personlig, og teamet begynner å ta parti.")
-    print("a) Erling tar individuelle samtaler for å senke temperaturen før fellesmøte.")
-    print("b) Erling tar konflikten i plenum for å 'rydde opp' åpent i gruppa.")
-    valg1 = hent_valg("Velg a eller b: ")
+    # Konflikt 1
+    print("Konflikt 1:\nUenighet om teknologivalg og design har utviklet seg fra en sakskonflikt til en personkonflikt. Silje mener løsningen Sivert foreslår vil låse brukeropplevelsen og hindre innovasjon. Siver mener Siljes forslag er urealistisk, usikker og for kostbart.\n")
+    print("Valg:")
+    print("a) Erling inkluderer hele gruppen i beslutningsprosessen og finner en ny løsning sammen.")
+    print("b) Erling tar et autoritært valg og velger Siljes forslag, noe som øker friksjonen.")
+    print("c) Erling utsetter avgjørelsen og håper konflikten løser seg selv.")
+    valg1 = hent_valg("Hva gjør Erling?", ["a", "b", "c"])
 
     if valg1 == "a":
-        print("\nKonsekvens: Begge føler seg hørt, temperaturen synker. Teamet får mer tillit til Erling.")
-        print("Historien går videre: Silje og Sivert blir med på et strukturert dialogmøte.\n")
+        konflikt1_konsekvens = "God løsning: Åpen kommunikasjon, alle blir hørt, og gruppen finner en ny løsning sammen."
+        konflikt1_tekst = "Erling inkluderer hele gruppen og finner en ny løsning."
     elif valg1 == "b":
-        print("\nKonsekvens: Konfrontasjonen skaper mer frustrasjon, og frontene blir hardere.")
-        print("Historien går videre: Konflikten tar mer tid enn planlagt og påvirker arbeidsflyten.\n")
+        konflikt1_konsekvens = "Dårlig løsning: Erling bruker makt, velger Siljes forslag, og Sivert vurderer å slutte. Dårligere klima."
+        konflikt1_tekst = "Erling tar et autoritært valg og velger Siljes forslag."
+    else:
+        konflikt1_konsekvens = "Passiv løsning: Konflikten ulmer videre, og teamet blir mer delt. Beslutningen utsettes og prosjektet stopper opp."
+        konflikt1_tekst = "Erling utsetter avgjørelsen og håper konflikten løser seg selv."
 
-    print("Valg etter punkt 1\n")
-
-   # Situasjon 2
-    print("Situasjon 2: Samtidig med konflikten mellom Silje og Sivert oppstår det spenningen mellom Hamdi [Kulturavdeling] og Jabir [Brukerrepresentant].")
-    print("Deres konflikt er fortsatt lavmælt, men påvirker samarbeidet om innbyggerdialogen.")
-    print("a) Erling kaller inn begge til et avklaringsmøte for å finne felles løsning.")
-    print("b) Erling avventer og håper de finner ut av det selv.")
-    valg2 = hent_valg("Velg a eller b: ")
+    # Konflikt 2
+    print("\nKonflikt 2:\nSamtidig med konflikten mellom Silje og Sivert oppstår det spenning mellom Hamdi (kulturavdelingen) og Jabir (brukerrepresentant). De er uenige om hvordan innbyggerne skal kunne delta i digitale folkemøter. Hamdi ønsker en kontrollert løsning gjennom kommunens eksisterende plattform. Jabir ønsker et mer åpent, dialogbasert system med rom for spontane innspill. Gruppen skal snart levere sin første prototype og Erling vet at valget han tar kan påvirke om gruppen klarer å levere prototypen og komme seg ut av storming fasen.\n")
+    print("Valg:")
+    print("a) Erling setter opp et møte med hele gruppen, diskusjonen blir intens men de finner en hybridløsning sammen.")
+    print("b) Erling har et møte med kun Hamdi og Jabir, men må til slutt ta et autoritært valg og velger Hamdis forslag.")
+    print("c) Erling ignorerer konflikten og håper de finner ut av det selv.")
+    valg2 = hent_valg("Hva gjør Erling?", ["a", "b", "c"])
 
     if valg2 == "a":
-        print("\nKonsekvens: Misforståelser avklares, og de finner en hybridløsning.")
-        print("Historien går videre: De blir tryggere på samarbeid fremover.\n")
+        konflikt2_konsekvens = "God løsning: Gruppen finner en hybridløsning, alle blir fornøyd, og samarbeidet styrkes."
+        konflikt2_tekst = "Erling inkluderer hele gruppen og de finner en hybridløsning."
     elif valg2 == "b":
-        print("\nKonsekvens: Konflikten ulmer videre og begynner å påvirke prototypeplanleggingen.")
-        print("Historien går videre: Uenigheten blir mer synlig for de andre i teamet.\n")
+        konflikt2_konsekvens = "Dårlig løsning: Erling tar et autoritært valg, velger Hamdis forslag, og Jabir føler seg overkjørt. Dårlig stemning og lav motivasjon."
+        konflikt2_tekst = "Erling tar et autoritært valg og velger Hamdis forslag."
+    else:
+        konflikt2_konsekvens = "Passiv løsning: Konflikten mellom Hamdi og Jabir vokser, og det blir dårligere samarbeid. Prototypen blir forsinket."
+        konflikt2_tekst = "Erling ignorerer konflikten og håper de finner ut av det selv."
 
-    print("Valg etter punkt 2\n")
-
-   # Situasjon 3
-    print("Situasjon 3: Motivasjonen i teamet faller.")
-    print("Prototype-fristen nærmer seg, men energien er lav etter flere konflikter.")
-    print("a) Erling setter av tid til feiring av små seire og relasjonsbygging.")
-    print("b) Erling fokuserer kun på fremdrift og strammer inn planene.")
-    valg3 = hent_valg("Velg a eller b: ")
+    # Konflikt 3
+    print("\nKonflikt 3:\nErling må bevare motivasjonen i teamet som helhet. Skal han sette av tid til relasjonsbygging og sosiale aktiviteter for å gjenopprette tillit, eller skal han prioritere fremdrift og leveranser for å holde fokus på resultatet?\n")
+    print("Valg:")
+    print("a) Erling inviterer hele gruppen på bowling og sosiale aktiviteter for å styrke samholdet.")
+    print("b) Erling prioriterer fremdrift og leveranser, og innfører lengre arbeidsdager med fokus på produktivitet.")
+    print("c) Erling gjør ingen endringer og håper motivasjonen kommer tilbake av seg selv.")
+    valg3 = hent_valg("Hva gjør Erling?", ["a", "b", "c"])
 
     if valg3 == "a":
-        print("\nKonsekvens: Moralen løftes, teamet viser mer samarbeid og positivitet.")
+        konflikt3_konsekvens = "God løsning: Gruppen får bedre samhold, motivasjonen øker, og alle jobber godt sammen."
+        konflikt3_tekst = "Erling inviterer til bowling og sosiale aktiviteter."
     elif valg3 == "b":
-        print("\nKonsekvens: Leveransetakten øker midlertidig, men motivasjonen faller ytterligere.")
+        konflikt3_konsekvens = "Dårlig løsning: Gruppen blir slitne, motivasjonen faller, og stemningen blir dårlig."
+        konflikt3_tekst = "Erling prioriterer kun fremdrift og leveranser."
+    else:
+        konflikt3_konsekvens = "Passiv løsning: Motivasjonen forblir lav, og prosjektet mister fremdrift."
+        konflikt3_tekst = "Erling gjør ingen endringer og håper motivasjonen kommer tilbake."
 
+    # Bestem utfall
+    if valg1 == "a" and valg2 == "a" and valg3 == "a":
+        utfall = "Den gode slutt: Prosjektet lykkes, gruppen har høy moral og kommunen er svært fornøyd."
+    elif valg1 == "b" and valg2 == "b" and valg3 == "b":
+        utfall = "Den dårlige slutt: Prosjektet mislykkes, gruppen splittes og kommunen er skuffet."
+    elif valg1 == "c" or valg2 == "c" or valg3 == "c":
+        utfall = "Den dårlige slutt: Prosjektet stopper opp eller blir forsinket, og gruppen mister motivasjon."
+    else:
+        utfall = "Mellommådig slutt: Prosjektet leveres, men gruppen er ikke helt fornøyd og samarbeidet kunne vært bedre."
 
-    print("Valg etter punkt 3\n")
-    print("\nSammendrag av dine valg:")
-    print(f"1) Silje vs Sivert: {valg1}")
-    print(f"2) Hamdi vs Jabir: {valg2}")
-    print(f"3) Teamets motivasjon: {valg3}")
-    print()
+    # Sammendrag
+    valg_dict = {
+        "konflikt1_tekst": konflikt1_tekst,
+        "konflikt1_valg": (
+            "a) Inkluderer gruppen" if valg1 == "a" else
+            "b) Autoritært valg for Silje" if valg1 == "b" else
+            "c) Utsetter avgjørelsen"
+        ),
+        "konflikt1_konsekvens": konflikt1_konsekvens,
+        "konflikt2_tekst": konflikt2_tekst,
+        "konflikt2_valg": (
+            "a) Inkluderer gruppen" if valg2 == "a" else
+            "b) Autoritært valg for Hamdi" if valg2 == "b" else
+            "c) Ignorerer konflikten"
+        ),
+        "konflikt2_konsekvens": konflikt2_konsekvens,
+        "konflikt3_tekst": konflikt3_tekst,
+        "konflikt3_valg": (
+            "a) Bowling og sosialt" if valg3 == "a" else
+            "b) Kun fremdrift og leveranser" if valg3 == "b" else
+            "c) Gjør ingen endringer"
+        ),
+        "konflikt3_konsekvens": konflikt3_konsekvens,
+        "utfall": utfall
+    }
 
-    # Avslutning
-    print("=== Sluttresultat ===")
-    print("Refleksjon: Dine valg illustrerer hvilke tilnærminger du ville brukt i teamet.")
-    print("Vurder hvilke handlinger som best bygger tillit, løser konflikter og sikrer fremdrift.")
+    vis_sammendrag(valg_dict)
 
-    #  Ekstra spørsmål som inneholder flera valg og mulighet for "annet"
-    print("\n=== Spørsmål om Erling ===")
-    print("1) Hvordan skal Erling håndtere konflikte til Silje og Sivert?")
-    print("a) Ta det opp i plenum for å skape åpenhet")
-    print("b) Ta individuelle samtaler for å dempe temperaturen")
-    print("c) La HR bistå for å sikre en nøytral håndtering")
-    print("d) Annet")
-    konflikt_valg = hent_flervalg("Velg a/b/c/d: ", ["a", "b", "c", "d"])
-    konflikt_annet = ""
-    if konflikt_valg == "d":
-        konflikt_annet = input("Beskriv annet tiltak: ").strip()
-
-    print("\n2) Hvordan forhindre at konflikten mellom Hamdi og Jabir blåser opp?")
-    print("a) Ta initiativ til et felles møte for å avklare uenigheter")
-    print("b) Avvente og håpe at partene finner en løsning selv")
-    print("c) Tidlig mediering eller oppfølging")
-
-    print("d) Annet")
-    hamji_valg = hent_flervalg("Velg a/b/c/d: ", ["a", "b", "c", "d"])
-    hamji_annet = ""
-    if hamji_valg == "d":
-        hamji_annet = input("Beskriv annet tiltak: ").strip()
-
-    print("\n3) Hvordan bevare motivasjonen i teamet som helhet?")
-    print("a) Sette av tid til relasjonsbygging og sosiale aktiviteter")
-    print("b) Prioritere fremdrift og leveranser")
-    print("c) Kombinere relasjonsbygging og fremdrift")
-    print("d) Annet")
-    motiv_valg = hent_flervalg("Velg a/b/c/d: ", ["a", "b", "c", "d"])
-    motiv_annet = ""
-    if motiv_valg == "d":
-        motiv_annet = input("Beskriv annet tiltak: ").strip()
-
-    print("\nOppsummering av dine svar:")
-    print(f"1) Silje/Sivert: {konflikt_valg} {konflikt_annet}")
-    print(f"2) Hamdi/Jabir: {hamji_valg} {hamji_annet}")
-    print(f"3) Motivasjon: {motiv_valg} {motiv_annet}")
-
-    # Faktorer, utfordringer og hovedbeslutninger
-    faktorer = "Åpen kommunikasjon, tillit, klare roller"
-    utfordringer = "Uenighet i faglig tilnærming, lav motivasjon etter konflikter"
-    hovedbeslutninger = "Individuelle samtaler, avklaringsmøter og relasjonsbygging"
-
-    print(f"Faktorer: {faktorer}")
-    print(f"Utfordringer: {utfordringer}")
-    print(f"Hovedbeslutninger: {hovedbeslutninger}")
-
-
-if __name__ == "__main__":
-    main()
+main()
