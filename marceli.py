@@ -9,6 +9,7 @@ def hent_valg(prompt, alternativer):
             return val
         print(f"Ugyldig valg. Velg {vis}.")
 
+#Sammendrag funksjon
 def vis_sammendrag(valg):
     print("\n=== Sammendrag av dine valg ===\n")
     print(f"Konflikt 1: {valg['konflikt1_tekst']}")
@@ -23,6 +24,7 @@ def vis_sammendrag(valg):
     print(f"Sluttresultat: {valg['utfall']}\n")
     print("Takk for at du spilte!")
 
+#Definerer main og begynner spillet.
 def main():
     print("=== Beslutningsspill: Erling som teamleder ===\n")
     print("Bakgrunn: Det har gått seks uker siden Erling, prosjektleder for utviklingen av kommunens nye digitale medborgerportal, samlet sitt prosjektteam for første gang.")
@@ -40,6 +42,7 @@ def main():
     print("c) Erling utsetter avgjørelsen og håper konflikten løser seg selv.")
     valg1 = hent_valg("Hva gjør Erling?", ["a", "b", "c"])
 
+#Valg som personen har tatt lagres i variabler
     if valg1 == "a":
         konflikt1_konsekvens = "God løsning: Åpen kommunikasjon, alle blir hørt, og gruppen finner en ny løsning sammen."
         konflikt1_tekst = "Erling inkluderer hele gruppen og finner en ny løsning."
@@ -51,13 +54,16 @@ def main():
         konflikt1_tekst = "Erling utsetter avgjørelsen og håper konflikten løser seg selv."
 
     # Konflikt 2
-    print("\nKonflikt 2:\nSamtidig med konflikten mellom Silje og Sivert oppstår det spenning mellom Hamdi (kulturavdelingen) og Jabir (brukerrepresentant). De er uenige om hvordan innbyggerne skal kunne delta i digitale folkemøter. Hamdi ønsker en kontrollert løsning gjennom kommunens eksisterende plattform. Jabir ønsker et mer åpent, dialogbasert system med rom for spontane innspill. Gruppen skal snart levere sin første prototype og Erling vet at valget han tar kan påvirke om gruppen klarer å levere prototypen og komme seg ut av storming fasen.\n")
+    print("\nKonflikt 2:\nSamtidig med konflikten mellom Silje og Sivert oppstår det spenning mellom Hamdi (kulturavdelingen) og Jabir (brukerrepresentant). De er uenige om hvordan innbyggerne skal kunne delta i digitale folkemøter. ")
+    print("Hamdi ønsker en kontrollert løsning gjennom kommunens eksisterende plattform. Jabir ønsker et mer åpent, dialogbasert system med rom for spontane innspill. ")
+    print("Gruppen skal snart levere sin første prototype og Erling vet at valget han tar kan påvirke om gruppen klarer å levere prototypen og komme seg ut av storming fasen.\n")
     print("Valg:")
     print("a) Erling setter opp et møte med hele gruppen, diskusjonen blir intens men de finner en hybridløsning sammen.")
     print("b) Erling har et møte med kun Hamdi og Jabir, men må til slutt ta et autoritært valg og velger Hamdis forslag.")
     print("c) Erling ignorerer konflikten og håper de finner ut av det selv.")
     valg2 = hent_valg("Hva gjør Erling?", ["a", "b", "c"])
 
+#Valg som personen har tatt lagres i variabler [2.0]
     if valg2 == "a":
         konflikt2_konsekvens = "God løsning: Gruppen finner en hybridløsning, alle blir fornøyd, og samarbeidet styrkes."
         konflikt2_tekst = "Erling inkluderer hele gruppen og de finner en hybridløsning."
@@ -69,13 +75,15 @@ def main():
         konflikt2_tekst = "Erling ignorerer konflikten og håper de finner ut av det selv."
 
     # Konflikt 3
-    print("\nKonflikt 3:\nErling må bevare motivasjonen i teamet som helhet. Skal han sette av tid til relasjonsbygging og sosiale aktiviteter for å gjenopprette tillit, eller skal han prioritere fremdrift og leveranser for å holde fokus på resultatet?\n")
+    print("\nKonflikt 3:\nErling må bevare motivasjonen i teamet som helhet. Skal han sette av tid til relasjonsbygging og sosiale aktiviteter for å gjenopprette tillit, ")
+    print ("eller skal han prioritere fremdrift og leveranser for å holde fokus på resultatet?\n")
     print("Valg:")
     print("a) Erling inviterer hele gruppen på bowling og sosiale aktiviteter for å styrke samholdet.")
     print("b) Erling prioriterer fremdrift og leveranser, og innfører lengre arbeidsdager med fokus på produktivitet.")
     print("c) Erling gjør ingen endringer og håper motivasjonen kommer tilbake av seg selv.")
     valg3 = hent_valg("Hva gjør Erling?", ["a", "b", "c"])
 
+#Valg som personen har tatt lagres i variabler [3.0]
     if valg3 == "a":
         konflikt3_konsekvens = "God løsning: Gruppen får bedre samhold, motivasjonen øker, og alle jobber godt sammen."
         konflikt3_tekst = "Erling inviterer til bowling og sosiale aktiviteter."
@@ -86,7 +94,7 @@ def main():
         konflikt3_konsekvens = "Passiv løsning: Motivasjonen forblir lav, og prosjektet mister fremdrift."
         konflikt3_tekst = "Erling gjør ingen endringer og håper motivasjonen kommer tilbake."
 
-    # Bestem utfall
+    # Bestemer utfall
     if valg1 == "a" and valg2 == "a" and valg3 == "a":
         utfall = "Den gode slutt: Prosjektet lykkes, gruppen har høy moral og kommunen er svært fornøyd."
     elif valg1 == "b" and valg2 == "b" and valg3 == "b":
@@ -122,6 +130,7 @@ def main():
         "utfall": utfall
     }
 
+#Viser sammendrag
     vis_sammendrag(valg_dict)
 
 main()
