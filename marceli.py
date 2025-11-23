@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+#Funksjon for å hente valg med valgmuligheter
 def hent_valg(prompt, alternativer):
     alternativer = [a.lower() for a in alternativer]
     vis = '/'.join(alternativer).upper()
@@ -35,7 +36,8 @@ def main():
     print("======================\n")
 
     # Konflikt 1
-    print("Konflikt 1:\nUenighet om teknologivalg og design har utviklet seg fra en sakskonflikt til en personkonflikt. Silje mener løsningen Sivert foreslår vil låse brukeropplevelsen og hindre innovasjon. Siver mener Siljes forslag er urealistisk, usikker og for kostbart.\n")
+    print("Konflikt 1:\nUenighet om teknologivalg og design har utviklet seg fra en sakskonflikt til en personkonflikt. ")
+    print("Silje mener løsningen Sivert foreslår vil låse brukeropplevelsen og hindre innovasjon. Siver mener Siljes forslag er urealistisk, usikker og for kostbart.\n")
     print("Valg:")
     print("a) Erling inkluderer hele gruppen i beslutningsprosessen og finner en ny løsning sammen.")
     print("b) Erling tar et autoritært valg og velger Siljes forslag, noe som øker friksjonen.")
