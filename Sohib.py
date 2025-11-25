@@ -27,13 +27,7 @@ def main():
     print("Teamet består av Erling [Teamleder], Sivert [IT-Rådgiver], Silje [UX-Designer], Hamdi [Utvikler], Jabir [Innbyggerdialogspesialist], Nora [Kvalitetssikring] og Jabir [Brukerrepresentant]")
     print("======================")
 
-    valg1 = None
-    valg2 = None
-    valg3 = None
-
-
    # Situasjon 1
-
     print("Situasjon 1: Konflikten mellom Silje (UX) og Sivert (IT).")
     print("Konflikten er i ferd med å bli personlig, og teamet begynner å ta parti.")
     print("a) Erling tar individuelle samtaler for å senke temperaturen før fellesmøte.")
@@ -89,45 +83,6 @@ def main():
     print("=== Sluttresultat ===")
     print("Refleksjon: Dine valg illustrerer hvilke tilnærminger du ville brukt i teamet.")
     print("Vurder hvilke handlinger som best bygger tillit, løser konflikter og sikrer fremdrift.")
-
-    #  Ekstra spørsmål som inneholder flera valg og mulighet for "annet"
-    print("\n=== Spørsmål om Erling ===")
-    print("1) Hvordan skal Erling håndtere konflikte til Silje og Sivert?")
-    print("a) Ta det opp i plenum for å skape åpenhet")
-    print("b) Ta individuelle samtaler for å dempe temperaturen")
-    print("c) La HR bistå for å sikre en nøytral håndtering")
-    print("d) Annet")
-    konflikt_valg = hent_flervalg("Velg a/b/c/d: ", ["a", "b", "c", "d"])
-    konflikt_annet = ""
-    if konflikt_valg == "d":
-        konflikt_annet = input("Beskriv annet tiltak: ").strip()
-
-    print("\n2) Hvordan forhindre at konflikten mellom Hamdi og Jabir blåser opp?")
-    print("a) Ta initiativ til et felles møte for å avklare uenigheter")
-    print("b) Avvente og håpe at partene finner en løsning selv")
-    print("c) Tidlig mediering eller oppfølging")
-
-    print("d) Annet")
-    hamji_valg = hent_flervalg("Velg a/b/c/d: ", ["a", "b", "c", "d"])
-    hamji_annet = ""
-    if hamji_valg == "d":
-        hamji_annet = input("Beskriv annet tiltak: ").strip()
-
-    print("\n3) Hvordan bevare motivasjonen i teamet som helhet?")
-    print("a) Sette av tid til relasjonsbygging og sosiale aktiviteter")
-    print("b) Prioritere fremdrift og leveranser")
-    print("c) Kombinere relasjonsbygging og fremdrift")
-    print("d) Annet")
-    motiv_valg = hent_flervalg("Velg a/b/c/d: ", ["a", "b", "c", "d"])
-    motiv_annet = ""
-    if motiv_valg == "d":
-        motiv_annet = input("Beskriv annet tiltak: ").strip()
-
-    print("\nOppsummering av dine svar:")
-    print(f"1) Silje/Sivert: {konflikt_valg} {konflikt_annet}")
-    print(f"2) Hamdi/Jabir: {hamji_valg} {hamji_annet}")
-    print(f"3) Motivasjon: {motiv_valg} {motiv_annet}")
-
     # Faktorer, utfordringer og hovedbeslutninger
     faktorer = "Åpen kommunikasjon, tillit, klare roller"
     utfordringer = "Uenighet i faglig tilnærming, lav motivasjon etter konflikter"
