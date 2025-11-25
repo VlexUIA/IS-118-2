@@ -7,17 +7,6 @@ def hent_valg(prompt):
         print("Ugyldig valg. Velg 'A' eller 'B'.")
 
 
-def hent_flervalg(prompt, options):
-    #Leser om du har valgt A, B, C eller D
-    options_set = set(o.lower() for o in options)
-    opts_str = "/".join(options)
-    while True:
-        val = input(prompt).strip().lower()
-        if val in options_set:
-            return val
-        print(f"Ugyldig valg. Velg {opts_str}.")
-
-
 def main():
     print("=== Beslutningsspill: Erling som teamleder ===\n")
     print("Bakgrunn: Det har gått seks uker siden Erling, prosjektleder for utviklingen av kommunens nye digitale medborgerportal, samlet sitt prosjektteam for første gang.")
@@ -90,7 +79,7 @@ def main():
 
     print(f"Faktorer: {faktorer}")
     print(f"Utfordringer: {utfordringer}")
-    print(f"Hovedbeslutninger: {hovedbeslutninger}")
+    print(f"Hovedbeslutninger: {hovedbeslutninger}\n")
 
 
 if __name__ == "__main__":
