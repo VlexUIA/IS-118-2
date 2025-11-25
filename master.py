@@ -1,4 +1,4 @@
-# Sjekker at valget er A eller B
+# Sjekker at valget er A eller B, hvis ikke så skriver det ut en feilmelding og spør på nytt
 def hent_valg(prompt):
     while True:
         val = input(prompt).strip().lower()
@@ -6,7 +6,7 @@ def hent_valg(prompt):
             return val
         print("Ugyldig valg. Velg 'A' eller 'B'.")
 
-
+    # Definerer main og begynner spillet.
 def main():
     print("=== Beslutningsspill: Erling som teamleder ===\n")
     print("Bakgrunn: Det har gått seks uker siden Erling, prosjektleder for utviklingen av kommunens nye digitale medborgerportal, samlet sitt prosjektteam for første gang.")
@@ -24,6 +24,7 @@ def main():
     print("b) Erling tar et autoritært valg og støtter Silje.")
     valg1 = hent_valg("Velg a eller b: ")
 
+    #Sjekker hvilket valg du har tatt, og gir poengsum
     if valg1 == "a":
         print("\nKonsekvens: Gruppen finner en hybridløsning og enigheten øker.")
         total_poeng += 2
@@ -37,6 +38,7 @@ def main():
     print("b) Han ignorerer spenningen og håper det løser seg selv.")
     valg2 = hent_valg("Velg a eller b: ")
 
+    #Sjekker hvilket valg du har tatt, og gir poengsum
     if valg2 == "a":
         print("\nKonsekvens: Gruppen blir enige om en kombinasjonsløsning – konflikten avverges.")
         total_poeng += 2
@@ -50,6 +52,7 @@ def main():
     print("b) Økt arbeidspress og lengre arbeidsdager.")
     valg3 = hent_valg("Velg a eller b: ")
 
+    #Sjekker hvilket valg du har tatt, og gir poengsum
     if valg3 == "a":
         print("\nKonsekvens: Gruppen får bedre humør og økt motivasjon.")
         total_poeng += 2
@@ -74,6 +77,9 @@ def main():
     print(f"1) Silje vs Sivert: {valg1}")
     print(f"2) Hamdi vs Jabir: {valg2}")
     print(f"3) Teamets motivasjon: {valg3}")
+    print("======================")
+    print("Takk for at du spilte!")
+    print("======================\n")
 
 
 if __name__ == "__main__":
