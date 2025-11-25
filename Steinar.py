@@ -3,18 +3,14 @@
 score = 0
 Points = {1: 3, 2: 2, 3: 1}
 
-Poengsum_riktig = 3
-Poengsum_middels = 2
-Poengsum_feil = 1
-
 def pause(msg="Trykk Enter for å fortsette..."):
     input(msg)
 
+# Funksjon for å tømme terminal vindu for tekst etter spesifikke punkter ved å trykke enter
 import os 
 import sys
 
 def clear_screen():
-    # Cross-platform clear using a single expression to avoid static analysis marking a branch as dead.
     os.system('cls' if os.name == 'nt' else 'clear')
 
 # Tekstsvar for de ulike valgene
