@@ -37,9 +37,9 @@ print ("\nDu har følgende valg for å hjelpe ham:")
 
 print (
     
-    "\n1 - Be teamet om å jobbe overtid for å møte fristen."
-    "\n2 - Gi teamet ekstra ressurser for å hjelpe til."
-    "\n3 - Kommunisere med ledelsen for å justere fristen."
+    "\n1 - Bra svar"
+    "\n2 - Middels svar"
+    "\n3 - Dårlig svar"
 )
 
 #1.1 Ugyldig input, feilmelding og nytt forsøk
@@ -149,8 +149,8 @@ score += Points.get(Third_choice, 0)
 
 # --------------- Avslutning ------------------
 if score >= 8:
-    print("Erling dreper ikke seg selv")
+    print("Erling blir glad")
 elif score >= 6:
-    print("Erling overlever selvmordsforsøket sitt")
+    print("Erling overlever")
 else:
-    print("Erling klarer ikke å overleve selvmordsforsøket sitt, gratulerer!")
+    print("Erling blir trist")
