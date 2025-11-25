@@ -8,7 +8,7 @@ def hent_valg(prompt):
 
     # Definerer main og begynner spillet.
 def main():
-    print("=== Beslutningsspill: Erling som teamleder ===\n")
+    print("\n=== Beslutningsspill: Erling som teamleder ===\n")
     print("Bakgrunn: Det har gått seks uker siden Erling, prosjektleder for utviklingen av kommunens nye digitale medborgerportal, samlet sitt prosjektteam for første gang.")
     print("Etter en inspirerende oppstart med høy energi, begynner samarbeidet nå å møte sine første reelle prøver. I starten var stemningen god. ")
     print("Gruppen opplevde høy motivasjon og fellesskap i målet om å lage en portal som kunne øke innbyggerengasjement og transparens i kommunen. ")
@@ -19,7 +19,7 @@ def main():
     total_poeng = 0
 
     # Situasjon 1 – Silje vs Sivert
-    print("Situasjon 1: Personkonflikten mellom Silje (UX) og Sivert (IT).")
+    print("\nSituasjon 1: Personkonflikten mellom Silje (UX) og Sivert (IT).")
     print("a) Erling setter opp et gruppemøte med åpen diskusjon.")
     print("b) Erling tar et autoritært valg og støtter Silje.")
     valg1 = hent_valg("Velg a eller b: ")
@@ -70,7 +70,7 @@ def main():
         print("Bra resultat: Kommunen er fornøyd med både prosess og produkt!")
     else:
         print("Uventet poengsum – sjekk logikken.")
-    print(f"Total poengsum: {total_poeng} av 6")
+    print(f"Total poengsum: {total_poeng}")
 
     # Oppsummering
     print("\n=== Oppsummering ===")
