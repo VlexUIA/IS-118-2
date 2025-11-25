@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
 
-#Funksjon for å hente valg med valgmuligheter
-def hent_valg(prompt, alternativer):
-    alternativer = [a.lower() for a in alternativer]
-    vis = '/'.join(alternativer).upper()
+#Funksjon for å hente valg (forenklet til to alternativer: a eller b)
+def hent_valg(prompt):
     while True:
-        val = input(f"{prompt} ({vis}): ").strip().lower()
-        if val in alternativer:
+        val = input(prompt).strip().lower()
+        if val in ("a", "b"):
             return val
-        print(f"Ugyldig valg. Velg {vis}.")
+        print("Ugyldig valg. Velg 'A' eller 'B'.")
 
 #Sammendrag funksjon
 def vis_sammendrag(valg):
