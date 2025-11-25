@@ -10,9 +10,11 @@ def hent_valg(prompt):
 def main():
     print("=== Beslutningsspill: Erling som teamleder ===\n")
     print("Bakgrunn: Det har gått seks uker siden Erling, prosjektleder for utviklingen av kommunens nye digitale medborgerportal, samlet sitt prosjektteam for første gang.")
-    print("Oppstarten var positiv, men nå har gruppen kommet inn i storming-fasen hvor konflikter og uenigheter oppstår.")
-    print("Teamet består av: Erling (Teamleder), Sivert (IT-rådgiver), Silje (UX-designer), Hamdi (Utvikler), Jabir (Innbyggerrepresentant) og Nora (Kvalitetssikring).")
-    print("======================\n")
+    print("Etter en inspirerende oppstart med høy energi, begynner samarbeidet nå å møte sine første reelle prøver. I starten var stemningen god. ")
+    print("Gruppen opplevde høy motivasjon og fellesskap i målet om å lage en portal som kunne øke innbyggerengasjement og transparens i kommunen. ")
+    print("Men nå, etter seks uker, har prosjektet gått inn i den klassiske storming-fasen, der ulike faglige perspektiver og personlige preferanser begynner å kollidere")
+    print("Teamet består av Erling [Teamleder], Sivert [IT-Rådgiver], Silje [UX-Designer], Hamdi [Utvikler], Jabir [Innbyggerdialogspesialist], Nora [Kvalitetssikring] og Jabir [Brukerrepresentant]")
+    print("======================")
 
     total_poeng = 0
 
